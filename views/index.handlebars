@@ -1,0 +1,36 @@
+<div class='row'> 
+
+    <div class='col-md-6'>
+      <div class='card'>
+        <h4 class='card-header text-center'>New Order</h4>
+        <div class='card-body'>
+          {{#each burgers}}
+            {{#unless this.devoured}}
+            
+              <div class='input-group my-4'>
+                <li class='form-control'>{{id}}. {{burger_name}}</li> <button class='btn btn-success devour-button ml-3' data-id='{{id}}' type='submit'>Devour</button>  
+              </div>
+            
+            {{/unless}}
+          {{/each}}
+
+        </div>
+      </div>
+    </div>
+
+    <div class='col-md-6'>
+      <div class='card'>
+        <h4 class='card-header text-center'>Previous Order</h4>
+        <div class='card-body'>
+          {{#each burgers}}
+            {{#if this.devoured}}
+              <div class='input-group my-4'>
+                <li class='form-control'>{{this.id}}. {{this.burger_name}}</li><button class='btn btn-danger delete-button ml-3' data-id='{{id}}' type='submit'><span class='fa fa-trash'></button>
+              </div>
+            {{/if}}
+          {{/each}}
+
+        </div>
+      </div>
+    </div> 
+</div>
