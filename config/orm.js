@@ -24,5 +24,18 @@ objToSql = (ob) => {
     }
     return arr.toString();
 }
+// Objects for all our SQL statement functions
+const orm = {
+    selectAll: (tableInput, cb) => {
+        const queryString = 'SELECT * FROM ' + tableInput + ';';
+        connection.query(queryString, (err, results) => {
+            if (err) {
+                throw err;
+            }
+            cb(results);
+        });
+    },
+}
+
 
 module.exports = orm;
