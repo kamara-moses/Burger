@@ -35,6 +35,25 @@ const orm = {
             cb(results);
         });
     },
+    insertOne: (table, cols, val, cb) => {
+        const queryString = 'INSERT INTO ' + table;
+
+        queryString += ' (';
+        queryString += cols.toString();
+        queryString += ') ';
+        queryString += 'VALUES (';
+        queryString += printQuestionMarks(vals.length);
+        queryString += ') ';
+
+        console.log(queryString);
+
+        connection.query(queryString, (err, results) => {
+            if (err) {
+                throw err;
+            }
+            cb(results);
+        });
+    }
 }
 
 
